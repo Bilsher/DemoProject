@@ -8,18 +8,9 @@
 </head>
 
 <body>
-<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-         <h5 class="fs-4" th:text ="${title}"></h5>
-    </a>
 
-    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Test</a>
-        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Test1</a>
-        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Test2</a>
-        <a class="py-2 link-body-emphasis text-decoration-none" href="#">Test3</a>
-    </nav>
-</div>
+<header th:insert="blocks/header :: header"></header>
+
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
@@ -28,7 +19,6 @@
                 leading about the collection below—its contents, the creator, etc.
                 Make it short and sweet, but not too short so folks don’t simply
                 skip over it entirely.</p>
-
         </div>
     </div>
 </section>
