@@ -14,13 +14,21 @@
                 <h1 class="fw-light" th:text="|Welcome to, ${title}!|"/>
 
                 <form action="Test" method="post">
-                    <input type="text" name = "text" placeholder="Введите текст"/>
                     <input type="text" name = "name" placeholder="Введите имя"/>
-                    <button type="submit"> Добавить</button>
+
+                    <input type="text" name = "text" placeholder="Введите текст"/>
+
+                    <button type="submit" class="btn btn-success"> Добавить</button>
                 </form>
 
                 <div th:each="el: ${posts}" class ="alert alert-info mt-2">
-                    <h3 th:text="${el.text}"></h3>
+                    <h4 th:text="${el.name}" ></h4>
+                    <h4 th:text="${el.text}" ></h4>
+
+                    <form action="Test" method="post">
+                        <a th:href="'/Test/'+${el.id}" class="btn btn-warning"> Детали </a>
+                    </form>
+
                 </div>
 
                 <p class="lead text-body-secondary">Something short and

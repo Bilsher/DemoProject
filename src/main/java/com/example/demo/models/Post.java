@@ -10,11 +10,22 @@ import lombok.Data;
 @Entity
 @Data
 public class Post {
+    //посмотреть почему автоматом не создался конструктор
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
     private String text;
+    public Post(){
+    }
+    public Post(String name, String text){
+        this.name = name;
+        this.text = text;
+    }
+
 
 
 }
