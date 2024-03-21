@@ -13,7 +13,7 @@
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light" th:text="|Welcome to, ${title}!|"/>
 
-                <form action="Test" method="post">
+                <form action="postcreator" method="post">
                     <input type="text" name = "name" placeholder="Введите имя"/>
 
                     <input type="text" name = "text" placeholder="Введите текст"/>
@@ -25,8 +25,8 @@
                     <h4 th:text="${el.name}" ></h4>
                     <h4 th:text="${el.text}" ></h4>
 
-                    <form action="Test" method="post">
-                        <a th:href="'/Test/'+${el.id}" class="btn btn-warning"> Детали </a>
+                    <form action="postcreator" method="post">
+                        <a th:href="'/postcreator/'+${el.id}" class="btn btn-warning"> Детали </a>
                     </form>
 
                 </div>

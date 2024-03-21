@@ -12,25 +12,19 @@
 
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light" th:text="|Welcome to, ${title}!|"/>
+            <h1 class="fw-light" th:text="|${title}|"/>
 
             <div th:each="el: ${post}" class ="alert alert-info mt-2">
                 <h4 th:text="${el.name}" ></h4>
                 <h4 th:text="${el.text}" ></h4>
 
+                <a th:href="'/Test/'+${el.id}" class="btn btn-warning"> Редактирвать </a>
 
-                    <a th:href="'/Test/'+${el.id}" class="btn btn-warning"> Редактирвать </a>
-
-                <form th:action="'/Test/'+${el.id}+'/remove'" method="post">
+                <form th:action="'/postcreator/'+${el.id}+'/remove'" method="post">
                     <button class="btn btn-warning" type="submit"> Удалить </button>
                 </form>
             </div>
 
-            <p class="lead text-body-secondary">Something short and
-                leading about the collection below—its contents, the creator, etc.
-                Make it short and sweet, but not too short so folks don’t simply
-                skip over it entirely.
-            </p>
         </div>
     </div>
 </section>
