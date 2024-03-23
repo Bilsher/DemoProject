@@ -11,7 +11,12 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
+
                 <h1 class="fw-light" th:text="|Welcome to, ${title}!|"/>
+
+                <p class="lead text-body-secondary">You can create your own post,
+                    please enter name and text of your post down bellow, to create new post.
+                </p>
 
                 <form action="postcreator" method="post">
                     <input type="text" name = "name" placeholder="Введите имя"/>
@@ -31,11 +36,7 @@
 
                 </div>
 
-                <p class="lead text-body-secondary">Something short and
-                    leading about the collection below—its contents, the creator, etc.
-                    Make it short and sweet, but not too short so folks don’t simply
-                    skip over it entirely.
-                </p>
+
             </div>
         </div>
     </section>

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import jakarta.validation.Valid;
+
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -42,5 +44,30 @@ public class PostController {
         postRepository.delete(post);
         return "redirect:/postcreator";
     }
+
+    @GetMapping("/postcreator/{id}/edit")
+    public String postEdit(@PathVariable(value = "id") long postId, Model model){
+        Optional<Post> post = postRepository.findById(postId);
+        ArrayList<Post> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("post",res);
+        return "post-edit";
+    }
+
+    @PostMapping("/postcreator/{id}/edit")
+    public String postEditUpdate(@PathVariable(value = "id") long postId,@Valid Post post,  Model model) {
+        //@RequestParam String text, @RequestParam String name,
+//        Post editedPost = postRepository.findById(postId).orElseThrow();
+//        editedPost.setName(name);
+//        editedPost.setText(text);
+//        postRepository.save(editedPost);
+
+        post.setId(postId);
+        this.postRepository.save(post);
+
+        return "redirect:/postcreator";
+    }
+
+
 
 }
