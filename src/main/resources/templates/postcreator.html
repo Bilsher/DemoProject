@@ -18,6 +18,8 @@
                     please enter name and text of your post down bellow, to create new post.
                 </p>
 
+
+
                 <form action="postcreator" method="post">
                     <input type="text" name = "name" placeholder="Введите имя"/>
 
@@ -26,14 +28,23 @@
                     <button type="submit" class="btn btn-success"> Добавить</button>
                 </form>
 
-                <div th:each="el: ${posts}" class ="alert alert-info mt-2">
-                    <h4 th:text="${el.name}" ></h4>
-                    <h4 th:text="${el.text}" ></h4>
+                <div class="d-flex flex-row">
+                <h4 class="p-2">Current posts:</h4>
+                </div>
 
-                    <form action="postcreator" method="post">
-                        <a th:href="'/postcreator/'+${el.id}" class="btn btn-warning"> Детали </a>
-                    </form>
+                <div class="card">
+                    <div class="card-body">
+                        <div th:each="el: ${posts}" class ="alert alert-info mt-2">
+                            <h5 th:text="${el.name}" class="card-title " ></h5>
+                            <p  th:text="${el.text}" class="card-text"></p>
 
+                            <div class="d-flex flex-row-reverse">
+                            <form action="postcreator" method="post">
+                                <a th:href="'/postcreator/'+${el.id}" class="btn btn-primary "> Детали </a>
+                            </form>
+                                </div>
+                        </div>
+                    </div>
                 </div>
 
 

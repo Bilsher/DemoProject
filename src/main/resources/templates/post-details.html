@@ -16,15 +16,17 @@
 
             <div th:each="el: ${post}" class ="alert alert-info mt-2">
                 <h4 th:text="${el.name}" ></h4>
-                <h4 th:text="${el.text}" ></h4>
+                <h5 th:text="${el.text}" ></h5>
 
+                <div class="d-flex flex-row-reverse">
+                    <form th:action="'/postcreator/'+${el.id}+'/remove'" method="post">
+                        <button class="btn btn-warning p-2" type="submit"> Удалить </button>
+                    </form>
 
-                <a th:href="'/postcreator/'+${el.id}+'/edit'" class="btn btn-warning"> Редактирвать </a>
-
-                <form th:action="'/postcreator/'+${el.id}+'/remove'" method="post">
-                    <button class="btn btn-warning" type="submit"> Удалить </button>
-                </form>
+                     <a th:href="'/postcreator/'+${el.id}+'/edit'" class="btn btn-warning p-2"> Редактирвать </a>
+                </div>
             </div>
+
 
         </div>
     </div>
