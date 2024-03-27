@@ -5,6 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -14,8 +18,11 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotEmpty(message="Street is required")
+    @Size(min=3, message="Name must be at least 5 characters long")
     private String name;
-
+    @NotEmpty(message="Street is required")
+    @Size(min=3, message="Name must be at least 5 characters long")
     private String text;
 
     public Long getId() {return id;}

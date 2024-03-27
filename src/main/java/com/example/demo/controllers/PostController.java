@@ -2,12 +2,15 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Post;
 import com.example.demo.repo.PostRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
-import jakarta.validation.Valid;
+
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -17,15 +20,21 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
     @GetMapping("/postcreator")
-    public String postShow(Model model) {
+    public String postShow( Post post,
+                           Model model) {
         model.addAttribute("title", "Post creator");
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts",posts);
         return "postcreator";
     }
     @PostMapping("/postcreator")
-    public String postAdd(@RequestParam String text, @RequestParam String name, Model model) {
-        Post post = new Post(name,text);
+    public String postAdd( @Valid Post post,
+                          Model model, BindingResult errors) {
+
+        if (errors.hasErrors()) {
+            return "postcreator";
+        }
+
         postRepository.save(post);
         return "redirect:/postcreator";
     }
